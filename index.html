@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="JavaScript Digital Time">
+  <link rel="stylesheet" type="text/css" href="style/reset.css">
+  <link rel="stylesheet" type="text/css" href="/styles/clock.css">
+  <title>My Digital Clock</title>
+</head>
+
+<body>
+  <h1>The Time is Now..</h1>
+  <h2>Live your best Life!</h2>
+  <div id="MyClockDisplay" class="clock"></div>
+  <script>
+    //24 hour Clock //
+    function showTime() {
+      var date = new Date()
+      var h = date.getHours(); // 0-23
+      var m = date.getMinutes(); // 0-59
+      var s = date.getSeconds(); // 0-59
+      var session = "am";
+
+      if (h == 0){
+           h = 12; //to amend the time format//
+      }
+      if (h > 12){
+           h = h - 12;
+            session = "pm";
+      }
+
+      h = (h < 10) ? "0" + h : h; //the true and false conditions//
+      m = (m < 10) ? "0" + m : m;
+      s = (s < 10) ? "0" + s : s;
+
+      var time = h + ":" + m + ":" + s + " " + session;
+      document.getElementById("MyClockDisplay").innerText = time;
+      document.getElementById("MyClockDisplay").textContent = time;
+      //innertext does not work in firefox//
+      setTimeout(showTime, 1000);
+    }
+      showTime();
+  </script>
+</body>
+
+</html>
